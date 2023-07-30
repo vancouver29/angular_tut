@@ -1,0 +1,19 @@
+<h2>Product List</h2>
+<ul>
+    <li *ngFor="let product of products | sort; trackBy: trackByProducts" (click)="selectedProduct = product">
+        {{product.name}}
+    </li>
+</ul>
+
+<app-product-detail *ngIf="selectedProduct; else noProduct" #product [product]="selectedProduct" (bought)="onBuy()">
+</app-product-detail>
+
+<ng-template #noProduct>
+    <p> No product is selected!</p>
+</ng-template>
+
+<h3>Offers</h3>
+<ng-template appProductHost></ng-template>
+
+<hr />
+<!-- <span>reference variable product.name: {{product.name}}</span> -->
